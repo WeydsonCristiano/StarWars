@@ -6,17 +6,79 @@ function Table() {
 
   return (
     <>
-      <head>Projeto Star Wars - Trybe</head>
-      <select>Coluna</select>
-      <select>Operador</select>
-      <button
-        type="button"
-      >
-        Filtrar
+      <hearder>Projeto Star Wars - Trybe</hearder>
+      <div>
 
-      </button>
-      <select>Ordenar</select>
-
+        <label htmlFor="coluna">
+          Coluna:
+          <select
+            name="coluna"
+          >
+            0
+          </select>
+        </label>
+        <label htmlFor="Operador">
+          Operador:
+          <select
+            name="Operador"
+          >
+            0
+          </select>
+        </label>
+        <input />
+        <button
+          type="button"
+        >
+          Filtrar
+        </button>
+        <label htmlFor="Ordenar">
+          Ordenar:
+          <select
+            name="Ornedar"
+          >
+            0
+          </select>
+        </label>
+        <button
+          type="button"
+        >
+          Acendente
+        </button>
+        <button
+          type="button"
+        >
+          Decendente
+        </button>
+        <button
+          type="button"
+        >
+          Ordenar
+        </button>
+        <button
+          type="button"
+        >
+          Remover Filtros
+        </button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>rotation_period</th>
+            <th>orbital_period</th>
+            <th>diameter</th>
+            <th>climate</th>
+            <th>gravity</th>
+            <th>terrain</th>
+            <th>surface_water</th>
+            <th>population</th>
+            <th>films.length</th>
+            <th>created</th>
+            <th>edited</th>
+            <th>url</th>
+          </tr>
+        </thead>
+      </table>
       <table>
         <thead>
           <tbody>
