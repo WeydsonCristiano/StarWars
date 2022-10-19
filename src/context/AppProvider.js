@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import AppContext from './appContext';
+import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
 
-  const requestApi = async () => {
-    const endpoint = 'https://swapi.dev/api/planets';
-    const response = await fetch(endpoint);
-    const { result } = await response.json();
-    console.log(result);
-    setData(result);
-  };
-
   useEffect(() => {
+    const requestApi = async () => {
+      const response = await fetch('https://swapi.dev/api/planets');
+      const { results } = await response.json();
+      const filtroResident = results.filter((e) => delete e.residents);
+      setData(filtroResident);
+    };
     requestApi();
   }, []);
 

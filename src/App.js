@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import AppProvider from './context/app.Provider';
+import Table from './componets/Table';
+import AppProvider from './context/AppProvider';
 
 function App() {
   return (
     <AppProvider>
-      <h1>estou aqui Provider</h1>
+      <Table />
     </AppProvider>
   );
 }
