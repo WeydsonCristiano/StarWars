@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import AppProvider from './context/app.Provider';
 
 function App() {
   return (
-    <span>Hello, App!</span>
+    <AppProvider>
+      <h1>estou aqui Provider</h1>
+    </AppProvider>
   );
 }
-// começãndo o projeto
 export default App;
