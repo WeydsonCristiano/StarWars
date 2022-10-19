@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import AppContext from './appContext';
 
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
 
   const requestApi = async () => {
-    const endpoint = await fetch('https://swapi.dev/api/planets');
-    const { result } = await endpoint.json();
+    const endpoint = 'https://swapi.dev/api/planets';
+    const response = await fetch(endpoint);
+    const { result } = await response.json();
+    console.log(result);
     setData(result);
   };
 
@@ -14,13 +17,15 @@ function AppProvider({ children }) {
     requestApi();
   }, []);
 
-  const contexto = { data };
-  console.log(data);
   return (
-    <AppContext.Provider value={ contexto }>
+    <AppContext.Provider value={ data }>
       { children }
     </AppContext.Provider>
   );
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.shape().isRequired,
+};
 
 export default AppProvider;
