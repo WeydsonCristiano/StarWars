@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
 import AppContext from './appContext';
 
-function appProvider({ children }) {
-  // const contexto = {
-  // };
+function AppProvider({ children }) {
+  const [data, setData] = useState([]);
+
+  const requestApi = async () => {
+    const endpoint = await fetch('https://swapi.dev/api/planets');
+    const { result } = await endpoint.json();
+    setData(result);
+  };
+
+  useEffect(() => {
+    requestApi();
+  }, []);
+
+  const contexto = { data };
+  console.log(data);
   return (
     <AppContext.Provider value={ contexto }>
       { children }
@@ -10,4 +23,4 @@ function appProvider({ children }) {
   );
 }
 
-export default appProvider;
+export default AppProvider;
