@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function AppProvider({ children }) {
+  const [name, setName] = useState('');
   const [data, setData] = useState([]);
-  console.log(data);
+
+  const handleName = ({ target }) => {
+    setName(target.value);
+  };
 
   useEffect(() => {
     const requestApi = async () => {
@@ -12,12 +16,19 @@ function AppProvider({ children }) {
       const { results } = await response.json();
       const filtroResident = results.filter((e) => delete e.residents);
       setData(filtroResident);
+      console.log(filtroResident);
     };
     requestApi();
   }, []);
 
+  const contexto = useMemo(() => ({
+    data,
+    name,
+    handleName,
+  }), [data, name]);
+
   return (
-    <AppContext.Provider value={ data }>
+    <AppContext.Provider value={ contexto }>
       { children }
     </AppContext.Provider>
   );

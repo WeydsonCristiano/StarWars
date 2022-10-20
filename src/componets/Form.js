@@ -1,29 +1,80 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../context/AppContext';
 
-function Forms() {
+function Form() {
+  const { handleName, name } = useContext(AppContext);
+
   return (
-    <forms>
+    <form>
       <label htmlFor="coluna">
         Coluna:
         <select name="coluna" id="">
-          <option>rotation_period</option>
-          <option>orbital_period</option>
-          <option>diameter</option>
-          <option>climate</option>
-          <option>terrain</option>
-          <option>surface_water</option>
-          <option>population</option>
+          <option
+            value="rotation_period"
+          >
+            rotation_period
+          </option>
+          <option
+            value="orbital_period"
+          >
+            orbital_period
+          </option>
+          <option
+            value="diameter"
+          >
+            diameter
+          </option>
+          <option
+            value="climate"
+          >
+            climate
+          </option>
+          <option
+            value="terrain"
+          >
+            terrain
+          </option>
+          <option
+            value="surface_water"
+          >
+            surface_water
+          </option>
+          <option
+            value="population"
+          >
+            population
+          </option>
         </select>
       </label>
       <label htmlFor="operador">
         Operador:
         <select name="operador" id="">
-          <option>maior que</option>
-          <option>menor que</option>
-          <option>igual a</option>
+          <option
+            value=""
+          >
+            maior que
+          </option>
+          <option
+            value=""
+          >
+            menor que
+          </option>
+          <option
+            value=""
+          >
+            igual a
+          </option>
         </select>
       </label>
-      <input type="number" />
+      <label htmlFor="fitroname">
+        <input
+          data-testid="name-filter"
+          name="filtroname"
+          value={ name }
+          onChange={ handleName }
+          type="text"
+        />
+      </label>
       <button
         type="button"
       >
@@ -57,8 +108,8 @@ function Forms() {
       >
         Remover Filtros
       </button>
-    </forms>
+    </form>
   );
 }
 
-export default Forms;
+export default Form;
