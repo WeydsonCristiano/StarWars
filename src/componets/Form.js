@@ -30,7 +30,7 @@ function Form() {
           value={ coluna }
           onChange={ handleColuna }
           name="coluna"
-          id=""
+          id="coluna"
         >
           <option
             value="population"
@@ -38,29 +38,19 @@ function Form() {
             population
           </option>
           <option
-            value="rotation_period"
-          >
-            rotation_period
-          </option>
-          <option
             value="orbital_period"
           >
             orbital_period
           </option>
           <option
+            value="rotation_period"
+          >
+            rotation_period
+          </option>
+          <option
             value="diameter"
           >
             diameter
-          </option>
-          <option
-            value="climate"
-          >
-            climate
-          </option>
-          <option
-            value="terrain"
-          >
-            terrain
           </option>
           <option
             value="surface_water"
@@ -76,7 +66,7 @@ function Form() {
           value={ operator }
           onChange={ handleOperator }
           name="operador"
-          id=""
+          id="operador"
         >
           <option
             value="maior que"
