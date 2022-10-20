@@ -63,7 +63,15 @@ function AppProvider({ children }) {
     handleOperator,
     handleNumb,
     handleClick,
-  }), [data, name, coluna, operator, numb, caractColun,clickOnOff]);
+  }), [
+    data,
+    name,
+    coluna,
+    operator,
+    numb,
+    caractColun,
+    clickOnOff,
+  ]);
 
   return (
     <AppContext.Provider value={ contexto }>

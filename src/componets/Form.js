@@ -68,17 +68,17 @@ function Form() {
           id=""
         >
           <option
-            value=""
+            value="maior que"
           >
             maior que
           </option>
           <option
-            value=""
+            value="menor que"
           >
             menor que
           </option>
           <option
-            value=""
+            value="igual a"
           >
             igual a
           </option>
