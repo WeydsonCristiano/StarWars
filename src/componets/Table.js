@@ -3,63 +3,8 @@ import AppContext from '../context/AppContext';
 
 function Table() {
   const data = useContext(AppContext);
-
   return (
     <>
-      <hearder>Projeto Star Wars - Trybe</hearder>
-      <div>
-
-        <label htmlFor="coluna">
-          Coluna:
-          <select
-            name="coluna"
-          >
-            0
-          </select>
-        </label>
-        <label htmlFor="Operador">
-          Operador:
-          <select
-            name="Operador"
-          >
-            0
-          </select>
-        </label>
-        <input />
-        <button
-          type="button"
-        >
-          Filtrar
-        </button>
-        <label htmlFor="Ordenar">
-          Ordenar:
-          <select
-            name="Ornedar"
-          >
-            0
-          </select>
-        </label>
-        <button
-          type="button"
-        >
-          Acendente
-        </button>
-        <button
-          type="button"
-        >
-          Decendente
-        </button>
-        <button
-          type="button"
-        >
-          Ordenar
-        </button>
-        <button
-          type="button"
-        >
-          Remover Filtros
-        </button>
-      </div>
       <table>
         <thead>
           <tr>

@@ -4,6 +4,7 @@ import AppContext from './AppContext';
 
 function AppProvider({ children }) {
   const [data, setData] = useState([]);
+  console.log(data);
 
   useEffect(() => {
     const requestApi = async () => {
