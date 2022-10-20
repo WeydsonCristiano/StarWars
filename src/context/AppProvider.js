@@ -5,32 +5,46 @@ import AppContext from './AppContext';
 function AppProvider({ children }) {
   const [name, setName] = useState('');
   const [data, setData] = useState([]);
-  const [coluna, setColuna] = useState('rotation_period');
+  const [coluna, setColuna] = useState('population');
   const [operator, setOperator] = useState('maior que');
   const [numb, setNumb] = useState(0);
-  const [clickOnOff, setClickOnoff] = useState(false);
+  const [planetas, setPlanetas] = useState([]);
 
-  const [caractColun, setCaractColun] = useState([]);
+  const [filtros, setFiltros] = useState([]);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    setClickOnoff(true);
-    setCaractColun(() => [
-      ...caractColun,
-      {
-        coluna,
-        operator,
-        numb,
-      },
-    ]);
-  };
+  useEffect(() => {
+    setData([...planetas]);
+    filtros.forEach((cris) => {
+      switch (cris.operator) {
+      case 'maior que': {
+        const filterColun = data
+          .filter((e) => Number(e[cris.coluna]) > Number(cris.numb));
+        return setData(filterColun);
+      }
+      case 'menor que': {
+        const filterColun2 = data
+          .filter((e) => Number(e[cris.coluna]) < Number(cris.numb));
+        return setData(filterColun2);
+      }
+      case 'igual a': {
+        const filterColun3 = data
+          .filter((e) => Number(e[cris.coluna]) === Number(cris.numb));
+        return setData(filterColun3);
+      }
+      default:
+        return cris;
+      }
+    });
+  }, [filtros]);
 
   const handleColuna = ({ target }) => {
     setColuna(target.value);
   };
+
   const handleOperator = ({ target }) => {
     setOperator(target.value);
   };
+
   const handleNumb = ({ target }) => {
     setNumb(target.value);
   };
@@ -45,7 +59,7 @@ function AppProvider({ children }) {
       const { results } = await response.json();
       const filtroResident = results.filter((e) => delete e.residents);
       setData(filtroResident);
-      console.log(filtroResident);
+      setPlanetas(filtroResident);
     };
     requestApi();
   }, []);
@@ -56,22 +70,12 @@ function AppProvider({ children }) {
     coluna,
     operator,
     numb,
-    caractColun,
-    clickOnOff,
+    setFiltros,
     handleName,
     handleColuna,
     handleOperator,
     handleNumb,
-    handleClick,
-  }), [
-    data,
-    name,
-    coluna,
-    operator,
-    numb,
-    caractColun,
-    clickOnOff,
-  ]);
+  }), [data, name, coluna, operator, numb, setFiltros]);
 
   return (
     <AppContext.Provider value={ contexto }>

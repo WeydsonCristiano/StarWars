@@ -8,7 +8,18 @@ function Form() {
     numb,
     handleColuna,
     handleOperator,
-    handleNumb, handleClick } = useContext(AppContext);
+    handleNumb, setFiltros } = useContext(AppContext);
+
+  const handleClick = () => {
+    setFiltros((prevState) => [
+      ...prevState,
+      {
+        coluna,
+        operator,
+        numb,
+      },
+    ]);
+  };
 
   return (
     <form>
@@ -21,6 +32,11 @@ function Form() {
           name="coluna"
           id=""
         >
+          <option
+            value="population"
+          >
+            population
+          </option>
           <option
             value="rotation_period"
           >
@@ -50,11 +66,6 @@ function Form() {
             value="surface_water"
           >
             surface_water
-          </option>
-          <option
-            value="population"
-          >
-            population
           </option>
         </select>
       </label>
