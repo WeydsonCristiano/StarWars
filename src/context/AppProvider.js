@@ -5,6 +5,35 @@ import AppContext from './AppContext';
 function AppProvider({ children }) {
   const [name, setName] = useState('');
   const [data, setData] = useState([]);
+  const [coluna, setColuna] = useState('rotation_period');
+  const [operator, setOperator] = useState('maior que');
+  const [numb, setNumb] = useState(0);
+  const [clickOnOff, setClickOnoff] = useState(false);
+
+  const [caractColun, setCaractColun] = useState([]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setClickOnoff(true);
+    setCaractColun(() => [
+      ...caractColun,
+      {
+        coluna,
+        operator,
+        numb,
+      },
+    ]);
+  };
+
+  const handleColuna = ({ target }) => {
+    setColuna(target.value);
+  };
+  const handleOperator = ({ target }) => {
+    setOperator(target.value);
+  };
+  const handleNumb = ({ target }) => {
+    setNumb(target.value);
+  };
 
   const handleName = ({ target }) => {
     setName(target.value);
@@ -24,8 +53,17 @@ function AppProvider({ children }) {
   const contexto = useMemo(() => ({
     data,
     name,
+    coluna,
+    operator,
+    numb,
+    caractColun,
+    clickOnOff,
     handleName,
-  }), [data, name]);
+    handleColuna,
+    handleOperator,
+    handleNumb,
+    handleClick,
+  }), [data, name, coluna, operator, numb, caractColun,clickOnOff]);
 
   return (
     <AppContext.Provider value={ contexto }>

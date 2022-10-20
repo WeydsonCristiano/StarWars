@@ -2,13 +2,25 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 
 function Form() {
-  const { handleName, name } = useContext(AppContext);
+  const {
+    coluna,
+    operator,
+    numb,
+    handleColuna,
+    handleOperator,
+    handleNumb, handleClick } = useContext(AppContext);
 
   return (
     <form>
       <label htmlFor="coluna">
         Coluna:
-        <select name="coluna" id="">
+        <select
+          data-testid="column-filter"
+          value={ coluna }
+          onChange={ handleColuna }
+          name="coluna"
+          id=""
+        >
           <option
             value="rotation_period"
           >
@@ -48,7 +60,13 @@ function Form() {
       </label>
       <label htmlFor="operador">
         Operador:
-        <select name="operador" id="">
+        <select
+          data-testid="comparison-filter"
+          value={ operator }
+          onChange={ handleOperator }
+          name="operador"
+          id=""
+        >
           <option
             value=""
           >
@@ -68,15 +86,16 @@ function Form() {
       </label>
       <label htmlFor="fitroname">
         <input
-          data-testid="name-filter"
-          name="filtroname"
-          value={ name }
-          onChange={ handleName }
-          type="text"
+          data-testid="value-filter"
+          value={ numb }
+          onChange={ handleNumb }
+          type="number"
         />
       </label>
       <button
+        data-testid="button-filter"
         type="button"
+        onClick={ handleClick }
       >
         Filtrar
       </button>
