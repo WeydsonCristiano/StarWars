@@ -1,7 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AppContext from '../context/AppContext';
 
 function Form() {
+  const [colunaFiltrada, setColunafiltrada] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
+
   const {
     coluna,
     operator,
@@ -10,99 +18,60 @@ function Form() {
     handleOperator,
     handleNumb, setFiltros, filtros } = useContext(AppContext);
 
-  const handleRemove = (id) => {
-    const newFiltro = filtros.filter((filter) => filter.id !== id);
-    setFiltros(newFiltro);
-
-    console.log('clicou');
-  };
-
   const handleClick = () => {
-    console.log('clicou');
     setFiltros((prevState) => [
       ...prevState,
       {
-        id: Math.randon(),
+        id: Math.random(),
         coluna,
         operator,
         numb,
       },
     ]);
+    const novaColum = colunaFiltrada.filter((optionColum) => optionColum !== coluna);
+    setColunafiltrada(novaColum);
+  };
+
+  const handleRemove = (id) => {
+    const newFiltro = filtros.filter((filter) => filter.id !== id);
+    setFiltros(newFiltro);
+  };
+  const handleAllRemove = (id) => {
+    const zerarFilter = filtros.filter((filter) => filter.id === id);
+    setFiltros(zerarFilter);
   };
 
   return (
     <>
       <form>
-        <label htmlFor="coluna">
-          Coluna:
-          <select
-            data-testid="column-filter"
-            value={ coluna }
-            onChange={ handleColuna }
-            name="coluna"
-            id="coluna"
-          >
-            <option
-              value="population"
-            >
-              population
+        Coluna:
+        <select
+          data-testid="column-filter"
+          value={ coluna }
+          onChange={ handleColuna }
+        >
+          {colunaFiltrada.map((e) => (
+            <option key={ e } value={ e }>
+              {e}
             </option>
-            <option
-              value="orbital_period"
-            >
-              orbital_period
-            </option>
-            <option
-              value="rotation_period"
-            >
-              rotation_period
-            </option>
-            <option
-              value="diameter"
-            >
-              diameter
-            </option>
-            <option
-              value="surface_water"
-            >
-              surface_water
-            </option>
-          </select>
-        </label>
-        <label htmlFor="operador">
-          Operador:
-          <select
-            data-testid="comparison-filter"
-            value={ operator }
-            onChange={ handleOperator }
-            name="operador"
-            id="operador"
-          >
-            <option
-              value="maior que"
-            >
-              maior que
-            </option>
-            <option
-              value="menor que"
-            >
-              menor que
-            </option>
-            <option
-              value="igual a"
-            >
-              igual a
-            </option>
-          </select>
-        </label>
-        <label htmlFor="fitroname">
-          <input
-            data-testid="value-filter"
-            value={ numb }
-            onChange={ handleNumb }
-            type="number"
-          />
-        </label>
+          ))}
+        </select>
+        Operador:
+        <select
+          data-testid="comparison-filter"
+          value={ operator }
+          onChange={ handleOperator }
+        >
+          <option value="maior que">maior que</option>
+          <option value="menor que">menor que</option>
+          <option value="igual a">igual a</option>
+        </select>
+        <input
+          data-testid="value-filter"
+          value={ numb }
+          onChange={ handleNumb }
+          type="number"
+        />
         <button
           data-testid="button-filter"
           type="button"
@@ -110,14 +79,6 @@ function Form() {
         >
           Filtrar
         </button>
-        <label htmlFor="Ordenar">
-          Ordenar:
-          <select
-            name="Ornedar"
-          >
-            0
-          </select>
-        </label>
         <button
           type="button"
         >
@@ -134,18 +95,20 @@ function Form() {
           Ordenar
         </button>
         <button
-          data-testid="filter"
+          data-testid="button-remove-filters"
           type="button"
-          onClick={ handleRemove }
+          onClick={ () => { handleAllRemove(); } }
         >
           Remover Filtros
         </button>
       </form>
       <ul>
         {
-          filtros.map(({ id, coluna, operator, numb }) => (
+          filtros.map((
+            { id, coluna: colunafiltro, operator: operatorfiltro, numb: numbfiltro },
+          ) => (
             <li data-testid="filter" key={ id }>
-              {`${coluna} ${operator} ${numb}`}
+              {`${colunafiltro} ${operatorfiltro} ${numbfiltro}`}
               { ' ' }
               <button
                 type="button"

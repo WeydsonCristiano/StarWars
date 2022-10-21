@@ -12,28 +12,27 @@ function AppProvider({ children }) {
   const [filtros, setFiltros] = useState([]);
 
   useEffect(() => {
-    setData([...planetas]);
+    let newPlanets = ([...planetas]);
     filtros.forEach((cris) => {
       switch (cris.operator) {
       case 'maior que': {
-        const filterColun = data
+        newPlanets = newPlanets
           .filter((e) => Number(e[cris.coluna]) > Number(cris.numb));
-        return setData(filterColun);
+        break;
       }
       case 'menor que': {
-        const filterColun2 = data
+        newPlanets = newPlanets
           .filter((e) => Number(e[cris.coluna]) < Number(cris.numb));
-        return setData(filterColun2);
+        break;
       }
-      case 'igual a': {
-        const filterColun3 = data
+      default: {
+        newPlanets = newPlanets
           .filter((e) => Number(e[cris.coluna]) === Number(cris.numb));
-        return setData(filterColun3);
+        break;
       }
-      default:
-        return cris;
       }
     });
+    setData(newPlanets);
   }, [filtros]);
 
   const handleColuna = ({ target }) => {
@@ -49,10 +48,6 @@ function AppProvider({ children }) {
   };
 
   const handleName = ({ target }) => {
-    setName(target.value);
-  };
-
-  const handleRemove = ({ target }) => {
     setName(target.value);
   };
 
@@ -79,7 +74,7 @@ function AppProvider({ children }) {
     handleColuna,
     handleOperator,
     handleNumb,
-  }), [data, name, coluna, operator, numb, setFiltros]);
+  }), [data, name, coluna, operator, numb]);
 
   return (
     <AppContext.Provider value={ contexto }>
