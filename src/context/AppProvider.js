@@ -5,7 +5,15 @@ import AppContext from './AppContext';
 function AppProvider({ children }) {
   const [name, setName] = useState('');
   const [data, setData] = useState([]);
-  const [coluna, setColuna] = useState('population');
+  const [colunaFiltrada, setColunafiltrada] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
+  const [coluna, setColuna] = useState(colunaFiltrada[0]);
+
   const [operator, setOperator] = useState('maior que');
   const [numb, setNumb] = useState(0);
   const [planetas, setPlanetas] = useState([]);
@@ -69,12 +77,15 @@ function AppProvider({ children }) {
     operator,
     numb,
     filtros,
+    colunaFiltrada,
+    setColunafiltrada,
     setFiltros,
     handleName,
     handleColuna,
     handleOperator,
     handleNumb,
-  }), [data, name, coluna, operator, numb]);
+    setColuna,
+  }), [data, name, coluna, operator, numb, colunaFiltrada]);
 
   return (
     <AppContext.Provider value={ contexto }>

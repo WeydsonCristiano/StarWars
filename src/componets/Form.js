@@ -1,22 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 
 function Form() {
-  const [colunaFiltrada, setColunafiltrada] = useState([
-    'population',
-    'orbital_period',
-    'diameter',
-    'rotation_period',
-    'surface_water',
-  ]);
-
   const {
     coluna,
     operator,
     numb,
     handleColuna,
     handleOperator,
-    handleNumb, setFiltros, filtros } = useContext(AppContext);
+    handleNumb,
+    setFiltros,
+    filtros,
+    colunaFiltrada,
+    setColunafiltrada, setColuna } = useContext(AppContext);
 
   const handleClick = () => {
     setFiltros((prevState) => [
@@ -30,15 +26,23 @@ function Form() {
     ]);
     const novaColum = colunaFiltrada.filter((optionColum) => optionColum !== coluna);
     setColunafiltrada(novaColum);
+    setColuna(novaColum[0]);
   };
 
-  const handleRemove = (id) => {
+  const handleRemove = (id, colunafiltro) => {
     const newFiltro = filtros.filter((filter) => filter.id !== id);
     setFiltros(newFiltro);
+    setColunafiltrada([...colunaFiltrada, colunafiltro]);
   };
+
   const handleAllRemove = (id) => {
     const zerarFilter = filtros.filter((filter) => filter.id === id);
     setFiltros(zerarFilter);
+    setColunafiltrada(['population',
+      'orbital_period',
+      'diameter',
+      'rotation_period',
+      'surface_water']);
   };
 
   return (
@@ -112,7 +116,7 @@ function Form() {
               { ' ' }
               <button
                 type="button"
-                onClick={ () => handleRemove(id) }
+                onClick={ () => handleRemove(id, colunafiltro) }
               >
                 Excluir
               </button>
