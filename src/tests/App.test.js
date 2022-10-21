@@ -44,24 +44,4 @@ describe('Teste o componente <App.js />', () => {
     const colunaOperadorTela = screen.getByText(/coluna:operador:/i);
     expect(colunaOperadorTela).toBeInTheDocument();
   })
-
-
-  test('verificar os data testId', () => {
-    render(<App />);
-
-  })
-
-  test('verificar os data testId', () => {
-    render(<App />);
-
-  })
-
-  test('verificar os data testId', () => {
-    render(<App />);
-
-  })
-
-
-
-
 })
