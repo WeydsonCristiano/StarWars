@@ -9,7 +9,6 @@ function AppProvider({ children }) {
   const [operator, setOperator] = useState('maior que');
   const [numb, setNumb] = useState(0);
   const [planetas, setPlanetas] = useState([]);
-
   const [filtros, setFiltros] = useState([]);
 
   useEffect(() => {
@@ -53,6 +52,10 @@ function AppProvider({ children }) {
     setName(target.value);
   };
 
+  const handleRemove = ({ target }) => {
+    setName(target.value);
+  };
+
   useEffect(() => {
     const requestApi = async () => {
       const response = await fetch('https://swapi.dev/api/planets');
@@ -70,6 +73,7 @@ function AppProvider({ children }) {
     coluna,
     operator,
     numb,
+    filtros,
     setFiltros,
     handleName,
     handleColuna,

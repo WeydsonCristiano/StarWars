@@ -3,6 +3,7 @@ import AppContext from '../context/AppContext';
 
 function Table() {
   const { data, name } = useContext(AppContext);
+
   return (
     <table>
       <thead>
@@ -23,7 +24,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        { data?.filter((el) => el.name.toUpperCase()
+        { data.filter((el) => el.name.toUpperCase()
           .includes(name.toUpperCase()))
           .map((e) => (
             <tr key={ e.name }>

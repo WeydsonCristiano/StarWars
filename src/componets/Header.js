@@ -16,8 +16,6 @@ function Header() {
           type="text"
         />
       </label>
-      <br />
-      <br />
     </>
   );
 }
