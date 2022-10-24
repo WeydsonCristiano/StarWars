@@ -55,7 +55,10 @@ function Form() {
           onChange={ handleColuna }
         >
           {colunaFiltrada.map((e) => (
-            <option key={ e } value={ e }>
+            <option
+              key={ e }
+              value={ e }
+            >
               {e}
             </option>
           ))}
@@ -113,7 +116,7 @@ function Form() {
           ) => (
             <li data-testid="filter" key={ id }>
               {`${colunafiltro} ${operatorfiltro} ${numbfiltro}`}
-              { ' ' }
+              {' '}
               <button
                 type="button"
                 onClick={ () => handleRemove(id, colunafiltro) }
