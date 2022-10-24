@@ -8,26 +8,26 @@ function Table() {
     <table>
       <thead>
         <tr>
-          <th>name</th>
-          <th>rotation_period</th>
-          <th>orbital_period</th>
-          <th>diameter</th>
-          <th>climate</th>
-          <th>gravity</th>
-          <th>terrain</th>
-          <th>surface_water</th>
-          <th>population</th>
-          <th>films</th>
-          <th>created</th>
-          <th>edited</th>
-          <th>url</th>
+          <th>Name</th>
+          <th>Rotation_period</th>
+          <th>Orbital_period</th>
+          <th>Diameter</th>
+          <th>Climate</th>
+          <th>Gravity</th>
+          <th>Terrain</th>
+          <th>Surface_water</th>
+          <th>Population</th>
+          <th>Films</th>
+          <th>Created</th>
+          <th>Edited</th>
+          <th>Url</th>
         </tr>
       </thead>
       <tbody>
-        { data.filter((el) => el.name.toUpperCase()
+        {data.filter((el) => el.name.toUpperCase()
           .includes(name.toUpperCase()))
           .map((e) => (
-            <tr key={ e.name }>
+            <tr key={ e.name } data-testid="planetasMocados">
               <td>{e.name}</td>
               <td>{e.rotation_period}</td>
               <td>{e.orbital_period}</td>

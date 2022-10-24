@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+  color: var(--color);
+  font-family: Oxanium, cursive;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("https://wallpapercave.com/wp/wp1915685.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: auto;
+  color: lime;
+  font-style: oblique;
+}
+
 .App {
   text-align: center;
 }
@@ -7,7 +24,181 @@
   pointer-events: none;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
+h1 {
+  color: #00A97F;
+  display: flex;
+  flex-direction: row;
+  font-size: 5rem;
+  font-style: italic;
+  justify-content: center;
+}
+
+select {
+  background-color: #838587;
+  color: lime;
+  font-size: 1.3rem;
+  text-align: center;
+
+}
+
+table {
+  background-color: rgba(140, 66, 170, 0.1);
+}
+
+html {
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+  height: auto;
+}
+
+input {
+  background-color: #838587;
+  border: solid 3px #00A97F;
+  border-radius: 15px;
+  color: lime;
+  font-size: 80%;
+  text-align: center;
+
+}
+
+.inputheader {
+  align-items: center;
+  display: flex;
+  font-size: 1.8rem;
+  height: 50px;
+  justify-content: center;
+}
+
+ul {
+  align-items: center;
+  margin: 0 auto;
+  width: 30%;
+}
+
+li {
+  border: solid 3px lime;
+  border-radius: 20px;
+  color: lime;
+  font-size: 1.3rem;
+  font-style: oblique;
+  text-align: center;
+}
+
+li button {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+form {
+  align-items: center;
+  color: #00A97F;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.8rem;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+table {
+  align-items: center;
+  border: solid 3px #00A97F;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+table th {
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
+  color: #00A97F;
+  font-size: 0.8rem;
+  margin: 0 auto;
+  justify-items: center;
+  padding: 12px;
+  text-align: center;
+}
+
+table td {
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  justify-items: center;
+  padding: 15px;
+  text-align: center;
+}
+
+table td:hover::before,
+:hover::after {
+  height: 310px;
+  width: 310px;
+}
+
+table td:hover {
+  background-color: #00A97F;
+}
+
+table td:active {
+  filter: brightness(.8);
+}
+
+/* From uiverse.io by @nikk7007 */
+button {
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: .3em;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  padding: 0.8em 1.7em;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  transition: .5s;
+  z-index: 1;
+  --color: #00A97F;
+}
+
+button::before,
+.button::after {
+  background-color: var(--color);
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 50px;
+  position: absolute;
+  transition: 1s ease;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  z-index: -1;
+}
+
+button::before {
+  left: -1em;
+  top: -1em;
+}
+
+button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+button:hover::before,
+.button:hover::after {
+  height: 310px;
+  width: 310px;
+}
+
+button:hover {
+  color: rgb(10, 25, 30);
+}
+
+button:active {
+  filter: brightness(.8);
+}
+
+@media (prefers-reduced-motion : no-preference) {
 
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

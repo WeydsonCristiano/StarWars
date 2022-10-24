@@ -63,6 +63,7 @@ function AppProvider({ children }) {
     const requestApi = async () => {
       const response = await fetch('https://swapi.dev/api/planets');
       const { results } = await response.json();
+      console.log(results);
       const filtroResident = results.filter((e) => delete e.residents);
       setData(filtroResident);
       setPlanetas(filtroResident);
