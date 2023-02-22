@@ -1,4 +1,4 @@
-/* * {
+* {
   box-sizing: border-box;
   color: var(--color);
   font-family: Oxanium, cursive;
@@ -13,7 +13,7 @@ body {
   bottom: auto;
   color: lime;
   font-style: oblique;
-} */
+}
 
 .App {
   text-align: center;
@@ -24,7 +24,7 @@ body {
   pointer-events: none;
 }
 
-/* h1 {
+h1 {
   color: #00A97F;
   display: flex;
   flex-direction: row;
@@ -196,7 +196,7 @@ button:hover {
 
 button:active {
   filter: brightness(.8);
-} */
+}
 
 @media ( prefers-reduced-motion : no-preference ) {
 
